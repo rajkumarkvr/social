@@ -1,0 +1,21 @@
+{
+  "name": "social",
+  "version": "1.0.0",
+  "description": "social media platform",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Rajkumar",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajkumarkvr/social.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rajkumarkvr/social/issues"
+  },
+  "homepage": "https://github.com/rajkumarkvr/social#readme"
+}
