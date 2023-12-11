@@ -2,6 +2,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+//Built-in module
+import path from "path";
 dotenv.config();
 //Application service point address
 const PORT = process.env.PORT || 3000;
@@ -11,10 +13,10 @@ const app = express();
 app.use(cors());
 //For parsing the request body =>Json data
 app.use(express.json());
-//Home route
-app.get("/", (req, res) => {
-  res.send("This is home page");
-});
+//Setting static file
+const STATIC_DIR="/home/rajkumar/Documents/social-media-platform/frontend/dist";
+
+app.use(express.static(STATIC_DIR));
 
 //Route for handling 404 page
 
