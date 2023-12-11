@@ -3,12 +3,10 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 //Built-in module
-import path from "path";
 dotenv.config();
 //Application service point address
 const PORT = process.env.PORT || 3000;
 const app = express();
-
 //For handling cross origin requests properly
 app.use(cors());
 //For parsing the request body =>Json data
