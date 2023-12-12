@@ -1,15 +1,35 @@
-import { useAuthContext } from "../AuthContext";
-import {Navigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
+import { useUser } from "./UserContext";
 // Define your HOC
 export const RequiredAuth = ({ children }) => {
-  const { isAuthenticated } = useAuthContext();
+  const navigate=useNavigate();
+  const {setCurrentUser}=useUser();
+      useEffect(()=>{
+        const getSession=async()=>{
+          try {
+           const response= await axios.get("http://localhost:3000/user",{withCredentials:true})
+           if(response.data.valid){
+            setCurrentUser(response.data.username);
+            if(children.type.name=="Login" || children.type.name=="Register"){
+             navigate("/",{replace:true});
+            }
+          } 
+          else{
+            if(children.type.name=="Register"){
+              navigate("/register");
+             }
+             else{
+             navigate("/login")
+             }
+          }
 
-  // Check if the user is authenticated
-  if (!isAuthenticated) {
-    // Redirect to the login page or any other route for unauthenticated users
-    return <Navigate to="/login"/>
-  }
-
-  // If authenticated, render the original component with its props
+        }catch (error) {
+             console.log(error.message)
+          }
+       }  
+       getSession();
+      },[])
   return children;
 };
