@@ -16,16 +16,15 @@ app.use(cors({
   origin:"*",
   methods:"*",
   allowedHeaders:"Content-Type",
-  credentials:true
+  credentials:true,
 }));
 app.use(session({
-  secret:"kumar",
+  secret:"raj",
   resave:false,
   saveUninitialized:false,
   cookie:{
-
     secure:false,
-    maxAge:1000*60*60*24
+    maxAge:1000*60*60*24,
   }
 }))
 

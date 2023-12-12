@@ -5,7 +5,7 @@ import { useUser } from "./UserContext";
 // Define your HOC
 export const RequiredAuth = ({ children }) => {
   const navigate=useNavigate();
-  const {setCurrentUser}=useUser();
+  const {setCurrentUser,setLoading}=useUser();
       useEffect(()=>{
         const getSession=async()=>{
           try {
@@ -26,6 +26,7 @@ export const RequiredAuth = ({ children }) => {
           }
 
         }catch (error) {
+          setLoading(false);
              console.log(error.message)
           }
        }  

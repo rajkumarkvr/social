@@ -5,7 +5,8 @@ export const useUser=()=>{
 }
 const UserProvider = ({children}) => {
     const [currentUser,setCurrentUser]=useState("");
-    return <UserContext.Provider value={{ currentUser,setCurrentUser}}>
+    const [loading,setLoading]=useState(false);
+    return<UserContext.Provider value={{ currentUser,setCurrentUser,loading,setLoading}}>
     {children}
   </UserContext.Provider>
 }

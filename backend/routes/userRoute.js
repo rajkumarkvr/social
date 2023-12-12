@@ -11,7 +11,16 @@ router.post("/register",async (req,res)=>{
             res.status(500).json({ErrorMessage:error.message});
         }
 });
-
+//Logout 
+router.get("/logout", (req,res)=>{
+   try{
+    req.session.destroy();
+    res.json({status:true})
+   }
+   catch(error){
+    console.log("err")
+   }
+});
 //Login user
 router.post("/login",async (req,res)=>{
     try{

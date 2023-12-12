@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:3000/user/login", user,{withCredentials:true});
-      setCurrentUser(response.data.res.username)
+      setCurrentUser(response.data?.res?.username)
       if(response.data.status){
         navigate("/")
       }
@@ -29,7 +29,7 @@ const Login = () => {
       console.log(error.message)
     }
   } 
-  return <div>
+return<div>
     <h1>Login</h1>
     <form onSubmit={handleSubmit}>
       <div>
